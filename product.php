@@ -55,9 +55,9 @@ if (isset($_POST['submit'])) {
     // $stmt->bindParam(':id', $comment_id);
     // $stmt->execute();
 
-    // // Redirect to the same page to refresh the comments and ratings
-    // header('Location: product.php?id=' . $product_id);
-    // exit;
+    // Redirect to the same page to refresh the comments and ratings
+    header('Location: product.php?id=' . $product_id);
+    exit;
 }
 ?>
 
