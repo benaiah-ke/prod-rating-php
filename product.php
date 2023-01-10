@@ -69,20 +69,23 @@ if (isset($_POST['submit'])) {
   <title><?php echo $product['name']; ?></title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <h1 class="text-center"><?php echo $product['name']; ?></h1>
-        <div class="text-center">
-          <img src="<?php echo $product['image']; ?>" class="img-thumbnail" alt="<?php echo $product['name']; ?>">
+<body style="background-color: beige; padding-bottom: 50px;">
+  <div class="container" style="background-color: white;">
+    <div class="row" style="padding: 0px;">
+      <div class="col-sm-12" style="padding: 0px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; background-color:beige; padding: 10px 20px; margin-bottom: 50px;">
+          <h1 class="text-center"><?php echo $product['name']; ?></h1>
+          <a class="btn btn-primary" href="index.php">Home</a>
         </div>
-        <p class="text-center">Price: $<?php echo $product['price']; ?></p>
+        <div class="text-center">
+          <img style="width: 70%" src="<?php echo $product['image']; ?>" class="img-thumbnail" alt="<?php echo $product['name']; ?>">
+        </div>
+        <p class="text-center">Price: Ksh <?php echo $product['price']; ?></p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <h2>Comments</h2>
+        <h4>Reviews</h2>
         <?php foreach ($comments as $comment) { ?>
           <div class="card">
             <div class="card-body">

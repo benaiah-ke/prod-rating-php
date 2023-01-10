@@ -13,6 +13,7 @@ def get_sentiment_ratings(comment):
         return 'neutral'
     else:
         return 'negative'
+    # return analysis.sentiment.polarity
 
 #create a database connection
 def create_connection():
@@ -51,6 +52,10 @@ comment = fetch_comment(connection,id)
 
 #analyse the comment polarity and generate a rating
 rating = get_sentiment_ratings(comment[2])
+
+#Normalize score to a range of 0 to 5
+rating = round((((rating + 1)/2) * 5),1)
+
 
 # #save the comment and the rating
 # comment = (name,comment,rating,product_id)

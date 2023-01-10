@@ -17,7 +17,7 @@
     }
   </style>
 </head>
-<body>
+<body style="background-color: beige; padding-bottom: 50px;">
 
 <?php
 
@@ -33,18 +33,18 @@
 
 ?>
 
-  <div class="container">
+  <div class="container" style="padding: 30px;">
     <div class="row">
     <?php 
     // Output the products
     foreach ($products as $product) {
     ?>
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-sm-6 col-md-4 col-lg-4" style="padding: 30px;">
         <div class="card product-card">
-          <img src="<?php echo $product['image']; ?>" class="card-img-top" alt="<?php echo $product['name']; ?>">
+          <img style="border-bottom: solid" src="<?php echo $product['image']; ?>" class="card-img-top" alt="<?php echo $product['name']; ?>">
           <div class="card-body">
             <h5 class="card-title"><?php echo $product['name']; ?></h5>
-            <p class="card-text">$<?php echo $product['price']; ?></p>
+            <p class="card-text">Ksh<?php echo $product['price']; ?></p>
             <a href="product.php?id=<?php echo $product['id']; ?>" class="btn btn-primary">View Product</a>
           </div>
         </div>
