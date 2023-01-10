@@ -1,0 +1,5 @@
+1. Make sure python is installed on your system (https://www.python.org/downloads/)
+2. Install the python module mysql-connector-python (https://www.w3schools.com/python/python_mysql_getstarted.asp)
+3. Create a database called 'prod-rating' and import the sql file names products.sql
+4. Move the files into your server project directory eg htdocs if you are using XAMPP on windows
+5. You can now run the project via localhost

@@ -7,13 +7,13 @@ import sys
 # Function to get the sentiment of a comment and return a ratings
 def get_sentiment_ratings(comment):
     analysis = TextBlob(comment)
-    if analysis.sentiment.polarity > 0:
-        return 'positive'
-    elif analysis.sentiment.polarity == 0:
-        return 'neutral'
-    else:
-        return 'negative'
-    # return analysis.sentiment.polarity
+    # if analysis.sentiment.polarity > 0:
+    #     return 'positive'
+    # elif analysis.sentiment.polarity == 0:
+    #     return 'neutral'
+    # else:
+    #     return 'negative'
+    return analysis.sentiment.polarity
 
 #create a database connection
 def create_connection():

@@ -38,13 +38,19 @@
     <?php 
     // Output the products
     foreach ($products as $product) {
+      $stmt = $db->prepare('SELECT AVG(c.ratings) as average_ratings FROM products p JOIN comments c ON p.id = c.product_id WHERE p.id = '.$product['id']);
+      $stmt->execute();
+      $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      $average_ratings = $result['average_ratings'];
+
     ?>
       <div class="col-sm-6 col-md-4 col-lg-4" style="padding: 30px;">
         <div class="card product-card">
           <img style="border-bottom: solid" src="<?php echo $product['image']; ?>" class="card-img-top" alt="<?php echo $product['name']; ?>">
           <div class="card-body">
-            <h5 class="card-title"><?php echo $product['name']; ?></h5>
-            <p class="card-text">Ksh<?php echo $product['price']; ?></p>
+            <h5 class="card-title"><?php echo $product['name']; ?>  <p style="font-size: 15px; margin-top: 10px; border: solid; border-width: 1px; padding: 5px 10px; width: 40%;">(Rating: <?php echo $average_ratings?>)</p></h5>
+            <p class="card-text">Ksh <?php echo $product['price']; ?></p>
             <a href="product.php?id=<?php echo $product['id']; ?>" class="btn btn-primary">View Product</a>
           </div>
         </div>
