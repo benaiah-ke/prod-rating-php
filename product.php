@@ -1,6 +1,5 @@
 <?php
 require_once 'conn.php';
-include 'vendor/autoload.php';
 
 ini_set('display_errors', 1); error_reporting(E_ALL);
 
@@ -28,7 +27,7 @@ if (isset($_POST['submit'])) {
 
     // Insert the comment into the database
     
-    $sql = 'INSERT INTO comments (name, comment, product_id) VALUES (:name, :comment, :product_id)';
+    $sql = 'INSERT INTO comments (name, comment, product_id, ratings) VALUES (:name, :comment, :product_id, 0)';
     
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':name', $name);
@@ -37,10 +36,9 @@ if (isset($_POST['submit'])) {
     $stmt->execute();
 
     $comment_id = $db->lastInsertId();
-    echo $comment_id;
 
-    $command = escapeshellcmd("python3 textblob/python.py $comment_id");
-    shell_exec($command);
+    $command = escapeshellcmd("python3 textblob/python.py $comment $product_id");
+    $ratings = shell_exec($command);
 
     // include 'vendor/autoload.php';
 
@@ -49,11 +47,11 @@ if (isset($_POST['submit'])) {
 
     // $output_text = $analyzer->getSentiment($comment);
 
-    // $sql = 'UPDATE comments SET ratings = :ratings WHERE id = :id';
-    // $stmt = $db->prepare($sql);
-    // $stmt->bindParam(':ratings', $output);
-    // $stmt->bindParam(':id', $comment_id);
-    // $stmt->execute();
+    $sql = 'UPDATE comments SET ratings = :ratings WHERE id = :id';
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':ratings', $ratings);
+    $stmt->bindParam(':id', $comment_id);
+    $stmt->execute();
 
     // Redirect to the same page to refresh the comments and ratings
     header('Location: product.php?id=' . $product_id);

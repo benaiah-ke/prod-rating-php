@@ -42,7 +42,7 @@
       $stmt->execute();
       $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-      $average_ratings = $result['average_ratings'];
+      $average_ratings = round($result['average_ratings']);
 
     ?>
       <div class="col-sm-6 col-md-4 col-lg-4" style="padding: 30px;">
