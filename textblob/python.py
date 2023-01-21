@@ -16,23 +16,23 @@ def get_sentiment_ratings(comment):
     return analysis.sentiment.polarity
 
 #create a database connection
-def create_connection():
-    conn = None
-    try:
-        conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="",
-            database="prod-rating"
-        )
-        # print("successful connection with MySQL")
-    except mysql.connector.Error as e:
-        print(e)
+# def create_connection():
+#     conn = None
+#     try:
+#         conn = mysql.connector.connect(
+#             host="localhost",
+#             user="root",
+#             password="",
+#             database="prod-rating"
+#         )
+#         # print("successful connection with MySQL")
+#     except mysql.connector.Error as e:
+#         print(e)
     
-    if conn:
-        return conn
+#     if conn:
+#         return conn
 
-connection = create_connection()
+# connection = create_connection()
 
 # #pick the comment details fom php
 # name = sys.argv[1]

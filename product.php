@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
 
     // Insert the comment into the database
     
-    $sql = 'INSERT INTO comments (name, comment, product_id, ratings) VALUES (:name, :comment, :product_id, 0)';
+    $sql = 'INSERT INTO comments (name, comment, product_id, ratings) VALUES (:name, :comment, :product_id,0)';
     
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':name', $name);
@@ -39,6 +39,8 @@ if (isset($_POST['submit'])) {
 
     $command = escapeshellcmd("python3 textblob/python.py $comment $product_id");
     $ratings = shell_exec($command);
+
+    echo $ratings;
 
     // include 'vendor/autoload.php';
 
